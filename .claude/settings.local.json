@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(gh api:*)",
+      "WebFetch(domain:www.jetbrains.com)",
+      "Bash(where uv:*)",
+      "Bash(where adb:*)",
+      "Bash(git clone:*)",
+      "Bash(cd /d/Code/android-mcp-server && uv python install 3.11 2>&1 && uv sync 2>&1 | tail -5)",
+      "Bash(cd \"D:\\\\Code\\\\college\\\\android\\\\KotlinHotel\" && ./gradlew assembleDebug 2>&1 | tail -50)",
+      "Bash(cd \"D:\\\\Code\\\\college\\\\android\\\\KotlinHotel\" && ./gradlew assembleDebug 2>&1 | tail -60)",
+      "Bash(cd \"D:\\\\Code\\\\college\\\\android\\\\KotlinHotel\" && ./gradlew assembleDebug 2>&1 | tail -80)",
+      "Bash(cd \"D:\\\\Code\\\\college\\\\android\\\\KotlinHotel\" && ./gradlew assembleDebug 2>&1 | tail -100)",
+      "Bash(cd \"D:\\\\Code\\\\college\\\\android\\\\KotlinHotel\" && ./gradlew assembleDebug 2>&1 | grep -E \"^\\(e:|w:|>|FAILURE|BUILD\\)\" | head -60)",
+      "Bash(./gradlew clean:*)",
+      "Bash(./gradlew installDebug)",
+      "Bash(grep -r ?attr/ app/src/main/res/layout/)",
+      "Bash(adb logcat:*)"
+    ]
+  }
+}

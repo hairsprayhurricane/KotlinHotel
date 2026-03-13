@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.kotlinhotel.presentation.home.HomeFragment"
+        android:label="Главная"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_booking"
+            app:destination="@id/bookingFragment" />
+        <action
+            android:id="@+id/action_home_to_key"
+            app:destination="@id/keyFragment" />
+        <action
+            android:id="@+id/action_home_to_services"
+            app:destination="@id/servicesFragment" />
+        <action
+            android:id="@+id/action_home_to_payment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookingFragment"
+        android:name="com.example.kotlinhotel.presentation.booking.BookingFragment"
+        android:label="Бронирование"
+        tools:layout="@layout/fragment_booking">
+        <action
+            android:id="@+id/action_booking_to_payment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/keyFragment"
+        android:name="com.example.kotlinhotel.presentation.key.KeyFragment"
+        android:label="Электронный ключ"
+        tools:layout="@layout/fragment_key" />
+
+    <fragment
+        android:id="@+id/hotelInfoFragment"
+        android:name="com.example.kotlinhotel.presentation.hotelinfo.HotelInfoFragment"
+        android:label="Информация об отеле"
+        tools:layout="@layout/fragment_hotel_info" />
+
+    <fragment
+        android:id="@+id/servicesFragment"
+        android:name="com.example.kotlinhotel.presentation.services.ServicesFragment"
+        android:label="Услуги"
+        tools:layout="@layout/fragment_services">
+        <action
+            android:id="@+id/action_services_to_payment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.kotlinhotel.presentation.payment.PaymentFragment"
+        android:label="Оплата"
+        tools:layout="@layout/fragment_payment">
+        <argument
+            android:name="service"
+            app:argType="com.example.kotlinhotel.domain.model.HotelService" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/reviewsFragment"
+        android:name="com.example.kotlinhotel.presentation.reviews.ReviewsFragment"
+        android:label="Отзывы"
+        tools:layout="@layout/fragment_reviews" />
+
+</navigation>
