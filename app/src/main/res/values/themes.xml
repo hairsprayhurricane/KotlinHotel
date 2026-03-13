@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.KotlinHotel" parent="Theme.MaterialComponents.Light.NoActionBar" />
+    <style name="Theme.KotlinHotel" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorAccent</item>
+        <item name="colorPrimaryVariant">@color/colorDark</item>
+        <item name="colorOnPrimary">@color/colorDark</item>
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:statusBarColor">@color/colorDark</item>
+    </style>
 </resources>
