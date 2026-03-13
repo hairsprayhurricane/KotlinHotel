@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kotlinhotel.ui.theme.KotlinHotelTheme
+import io.github.serpro69.kfaker.faker
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +33,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
+    var faker = faker { }
+
     Text(
-        text = "Hello $name!",
+        text = "Hello ${faker.name.firstName()}!",
         modifier = modifier
     )
 }
