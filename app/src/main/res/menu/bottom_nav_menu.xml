@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@android:drawable/ic_menu_today"
+        android:title="@string/nav_home" />
+    <item
+        android:id="@+id/roomsFragment"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="@string/nav_rooms" />
+    <item
+        android:id="@+id/servicesFragment"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/nav_services" />
+    <item
+        android:id="@+id/hotelInfoFragment"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="@string/nav_hotel_info" />
+    <item
+        android:id="@+id/reviewsFragment"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="@string/nav_reviews" />
+</menu>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.kotlinhotel.presentation.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_key"
+            app:destination="@id/keyFragment" />
+        <action
+            android:id="@+id/action_home_to_services"
+            app:destination="@id/servicesFragment" />
+        <action
+            android:id="@+id/action_home_to_hotel_info"
+            app:destination="@id/hotelInfoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/roomsFragment"
+        android:name="com.example.kotlinhotel.presentation.rooms.RoomsFragment"
+        android:label="Rooms"
+        tools:layout="@layout/fragment_rooms">
+        <action
+            android:id="@+id/action_rooms_to_room_detail"
+            app:destination="@id/roomDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/roomDetailFragment"
+        android:name="com.example.kotlinhotel.presentation.rooms.RoomDetailFragment"
+        android:label="Room Detail"
+        tools:layout="@layout/fragment_room_detail">
+        <argument
+            android:name="roomId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_room_detail_to_booking_form"
+            app:destination="@id/bookingFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookingFormFragment"
+        android:name="com.example.kotlinhotel.presentation.rooms.BookingFormFragment"
+        android:label="Book Room"
+        tools:layout="@layout/fragment_booking_form">
+        <argument
+            android:name="roomId"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/servicesFragment"
+        android:name="com.example.kotlinhotel.presentation.services.ServicesFragment"
+        android:label="Services"
+        tools:layout="@layout/fragment_services">
+        <action
+            android:id="@+id/action_servicesFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.kotlinhotel.presentation.payment.PaymentFragment"
+        android:label="Payment"
+        tools:layout="@layout/fragment_payment">
+        <argument
+            android:name="service"
+            app:argType="com.example.kotlinhotel.domain.model.HotelService" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/hotelInfoFragment"
+        android:name="com.example.kotlinhotel.presentation.hotelinfo.HotelInfoFragment"
+        android:label="Hotel Info"
+        tools:layout="@layout/fragment_hotel_info" />
+
+    <fragment
+        android:id="@+id/reviewsFragment"
+        android:name="com.example.kotlinhotel.presentation.reviews.ReviewsFragment"
+        android:label="Reviews"
+        tools:layout="@layout/fragment_reviews" />
+
+    <fragment
+        android:id="@+id/keyFragment"
+        android:name="com.example.kotlinhotel.presentation.key.KeyFragment"
+        android:label="Room Key"
+        tools:layout="@layout/fragment_key" />
+
+</navigation>
