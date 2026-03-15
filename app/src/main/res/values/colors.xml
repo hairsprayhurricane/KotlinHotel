@@ -8,6 +8,10 @@
     <color name="colorTextSecondary">#7A7A7A</color>
     <color name="colorDivider">#E8E3DE</color>
     <color name="colorBottomNav">#1A1A1A</color>
+    <color name="colorCardDark">#1A1A1A</color>
+    <color name="colorCardDivider">#333333</color>
+    <color name="colorTextLight">#CCCCCC</color>
+    <color name="colorTextMuted">#AAAAAA</color>
     <color name="white">#FFFFFFFF</color>
     <color name="black">#FF000000</color>
 </resources>

@@ -49,10 +49,8 @@
             android:isIndicator="true"
             android:numStars="5"
             android:stepSize="0.5"
-            android:scaleX="0.7"
-            android:scaleY="0.7"
-            android:layout_marginStart="-8dp"
-            android:layout_marginTop="4dp" />
+            android:layout_marginTop="4dp"
+            style="?android:attr/ratingBarStyleSmall" />
 
         <TextView
             android:id="@+id/tvReviewText"

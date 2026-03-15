@@ -77,17 +77,33 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Deluxe"
-                            android:textColor="#CCCCCC"
+                            android:textColor="@color/colorTextLight"
                             android:textSize="14sp" />
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/tvFloor"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Floor 4"
-                        android:textColor="#CCCCCC"
-                        android:textSize="14sp" />
+                        android:orientation="vertical"
+                        android:gravity="end">
+
+                        <TextView
+                            android:id="@+id/tvFloor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Floor 4"
+                            android:textColor="@color/colorTextLight"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tvCleaningTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_cleaning_default"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
                 </LinearLayout>
 
                 <View
@@ -95,7 +111,7 @@
                     android:layout_height="1dp"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="12dp"
-                    android:background="#333333" />
+                    android:background="@color/colorCardDivider" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -112,7 +128,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/label_check_in"
-                            android:textColor="#AAAAAA"
+                            android:textColor="@color/colorTextMuted"
                             android:textSize="11sp" />
 
                         <TextView
@@ -134,7 +150,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/label_check_out"
-                            android:textColor="#AAAAAA"
+                            android:textColor="@color/colorTextMuted"
                             android:textSize="11sp" />
 
                         <TextView
@@ -275,8 +291,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
-            android:paddingStart="0dp"
-            android:paddingEnd="16dp" />
+            android:paddingEnd="4dp" />
 
     </LinearLayout>
 </ScrollView>

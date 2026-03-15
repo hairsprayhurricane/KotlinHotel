@@ -8,5 +8,6 @@ data class Room(
     val pricePerNight: Double,
     val description: String,
     val amenities: List<String>,
-    val imageRes: Int = 0
+    val imageRes: Int = 0,
+    val cleaningTime: String = "11:00"
 )

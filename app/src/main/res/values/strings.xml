@@ -56,4 +56,21 @@
     <string name="welcome_greeting">Welcome back,</string>
     <string name="nfc_instructions">Hold your phone near the door lock or tap the button below</string>
     <string name="room_key_title">Electronic Room Key</string>
+    <string name="label_booking_details">Booking Details</string>
+    <string name="label_dates">Dates</string>
+    <string name="label_select_check_in">Check-in date</string>
+    <string name="label_select_check_out">Check-out date</string>
+    <string name="label_cleaning_default">Cleaning: 11:00</string>
+    <string name="label_bus_schedule">Bus Schedule</string>
+    <string name="label_route">Route</string>
+    <string name="label_departure">Departure</string>
+    <string name="label_arrival">Arrival</string>
+    <string name="label_transfer_services">Transfer Services</string>
+    <string name="label_rent_info">Rent a car or scooter at the reception desk.</string>
+    <string name="label_spa_schedule">Schedule</string>
+    <string name="label_spa_services">SPA Services</string>
+    <string name="spa_working_hours">Mon-Fri: 09:00 - 21:00\nSat-Sun: 10:00 - 22:00\nPool: 07:00 - 23:00\nFitness: 06:00 - 23:00</string>
+    <string name="btn_book_spa">Book SPA Session</string>
+    <string name="label_restaurant_menu">Menu</string>
+    <string name="btn_order_to_room">Order to Room</string>
 </resources>
