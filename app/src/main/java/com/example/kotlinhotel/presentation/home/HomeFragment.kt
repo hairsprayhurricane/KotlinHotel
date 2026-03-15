@@ -82,6 +82,7 @@ class HomeFragment : Fragment() {
             val fmt = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
             binding.tvRoomNumber.text = "Room ${booking.room.number}"
             binding.tvFloor.text = "Floor ${booking.room.floor}"
+            binding.tvCleaningTime.text = "Cleaning: ${booking.room.cleaningTime}"
             binding.tvCheckIn.text = "Check-in: ${fmt.format(Date(booking.dateStart))}"
             binding.tvCheckOut.text = "Check-out: ${fmt.format(Date(booking.dateEnd))}"
             binding.tvRoomType.text = booking.room.type

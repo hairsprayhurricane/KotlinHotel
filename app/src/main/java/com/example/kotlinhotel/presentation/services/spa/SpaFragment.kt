@@ -9,9 +9,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlinhotel.databinding.FragmentSpaBinding
 import com.example.kotlinhotel.domain.model.ServiceCategory
+import com.example.kotlinhotel.presentation.services.ServicesFragmentDirections
 import com.example.kotlinhotel.presentation.services.ServicesViewModel
 import com.example.kotlinhotel.presentation.services.excursions.ExcursionAdapter
 import com.google.android.material.snackbar.Snackbar
@@ -33,14 +35,23 @@ class SpaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = ExcursionAdapter { service ->
-            Snackbar.make(binding.root, "SPA session booked!", Snackbar.LENGTH_SHORT).show()
+            findNavController().navigate(
+                ServicesFragmentDirections.actionServicesFragmentToPaymentFragment(service)
+            )
         }
         binding.rvSpa.apply {
             layoutManager = LinearLayoutManager(requireContext())
             this.adapter = adapter
         }
         binding.btnBookSpa.setOnClickListener {
-            Snackbar.make(binding.root, "SPA session booked!", Snackbar.LENGTH_SHORT).show()
+            val spaServices = viewModel.getByCategory(ServiceCategory.SPA)
+            if (spaServices.isNotEmpty()) {
+                findNavController().navigate(
+                    ServicesFragmentDirections.actionServicesFragmentToPaymentFragment(spaServices.first())
+                )
+            } else {
+                Snackbar.make(binding.root, "No SPA services available", Snackbar.LENGTH_SHORT).show()
+            }
         }
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {

@@ -6,6 +6,7 @@ data class Booking(
     val guestName: String,
     val guestEmail: String,
     val guestPhone: String,
+    val guestPassport: String = "",
     val dateStart: Long,
     val dateEnd: Long,
     val status: BookingStatus

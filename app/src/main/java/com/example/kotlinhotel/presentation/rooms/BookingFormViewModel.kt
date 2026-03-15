@@ -33,7 +33,7 @@ class BookingFormViewModel @Inject constructor(
     private val _state = MutableStateFlow<BookingFormState>(BookingFormState.Idle)
     val state: StateFlow<BookingFormState> = _state
 
-    fun submitBooking(name: String, email: String, phone: String) {
+    fun submitBooking(name: String, email: String, phone: String, passport: String, dateStart: Long, dateEnd: Long) {
         viewModelScope.launch {
             _state.value = BookingFormState.Loading
             val room = roomRepository.getRoomById(roomId).first()
@@ -41,15 +41,15 @@ class BookingFormViewModel @Inject constructor(
                 _state.value = BookingFormState.Error("Room not found")
                 return@launch
             }
-            val now = System.currentTimeMillis()
             val booking = Booking(
                 id = UUID.randomUUID().toString(),
                 room = room,
                 guestName = name,
                 guestEmail = email,
                 guestPhone = phone,
-                dateStart = now,
-                dateEnd = now + 3 * 24 * 60 * 60 * 1000L,
+                guestPassport = passport,
+                dateStart = dateStart,
+                dateEnd = dateEnd,
                 status = BookingStatus.CONFIRMED
             )
             bookingRepository.createBooking(booking).collect { result ->

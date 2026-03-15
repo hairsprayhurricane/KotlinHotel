@@ -14,9 +14,11 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlinhotel.databinding.FragmentRestaurantBinding
+import com.example.kotlinhotel.domain.model.HotelService
 import com.example.kotlinhotel.domain.model.ServiceCategory
 import com.example.kotlinhotel.presentation.services.ServicesFragmentDirections
 import com.example.kotlinhotel.presentation.services.ServicesViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -43,6 +45,25 @@ class RestaurantFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext())
             this.adapter = adapter
         }
+
+        binding.btnOrderToRoom.setOnClickListener {
+            val foodServices = viewModel.getByCategory(ServiceCategory.FOOD)
+            if (foodServices.isNotEmpty()) {
+                val orderService = HotelService(
+                    id = "room_order",
+                    title = "Room Service Order",
+                    description = "Food delivery to your room",
+                    price = foodServices.sumOf { it.price } / foodServices.size,
+                    category = ServiceCategory.FOOD
+                )
+                findNavController().navigate(
+                    ServicesFragmentDirections.actionServicesFragmentToPaymentFragment(orderService)
+                )
+            } else {
+                Snackbar.make(binding.root, "No items available", Snackbar.LENGTH_SHORT).show()
+            }
+        }
+
         binding.btnDelivery.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://yandex.ru/eda"))
             startActivity(intent)

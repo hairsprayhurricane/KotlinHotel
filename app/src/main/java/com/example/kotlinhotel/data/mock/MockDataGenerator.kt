@@ -13,6 +13,7 @@ class MockDataGenerator @Inject constructor() {
 
     fun generateRooms(count: Int = 12): List<Room> {
         val types = listOf("Standard", "Deluxe", "Suite", "Junior Suite")
+        val cleaningTimes = listOf("09:00", "10:00", "11:00", "12:00", "14:00", "15:00")
         return (1..count).map { i ->
             Room(
                 id = UUID.randomUUID().toString(),
@@ -21,7 +22,8 @@ class MockDataGenerator @Inject constructor() {
                 floor = (1..10).random(),
                 pricePerNight = (50..500).random().toDouble(),
                 description = faker.lorem.words() + " " + faker.lorem.words() + " comfortable room with modern amenities.",
-                amenities = generateAmenities()
+                amenities = generateAmenities(),
+                cleaningTime = cleaningTimes.random()
             )
         }
     }
@@ -72,6 +74,41 @@ class MockDataGenerator @Inject constructor() {
             title = "Gala Dinner",
             description = "Fine dining experience with live music.",
             price = 2800.0,
+            category = ServiceCategory.FOOD
+        ),
+        HotelService(
+            id = "food_004",
+            title = "Caesar Salad",
+            description = "Romaine lettuce, croutons, parmesan, chicken breast.",
+            price = 450.0,
+            category = ServiceCategory.FOOD
+        ),
+        HotelService(
+            id = "food_005",
+            title = "Grilled Salmon",
+            description = "Fresh Atlantic salmon with vegetables and lemon sauce.",
+            price = 1600.0,
+            category = ServiceCategory.FOOD
+        ),
+        HotelService(
+            id = "food_006",
+            title = "Beef Steak",
+            description = "Premium marbled beef with mashed potatoes.",
+            price = 2200.0,
+            category = ServiceCategory.FOOD
+        ),
+        HotelService(
+            id = "food_007",
+            title = "Tiramisu",
+            description = "Classic Italian dessert with mascarpone and espresso.",
+            price = 380.0,
+            category = ServiceCategory.FOOD
+        ),
+        HotelService(
+            id = "food_008",
+            title = "Fresh Juice",
+            description = "Freshly squeezed orange, apple or grapefruit juice.",
+            price = 250.0,
             category = ServiceCategory.FOOD
         ),
         HotelService(
