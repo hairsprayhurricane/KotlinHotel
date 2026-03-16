@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.kotlinhotel.R
 import com.example.kotlinhotel.databinding.FragmentRoomsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -44,22 +45,38 @@ class RoomsFragment : Fragment() {
         binding.rvRooms.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = roomAdapter
+            itemAnimator = null
         }
     }
 
     private fun setupFilters() {
-        val filters = listOf("All", "Standard", "Deluxe", "Suite")
-        filters.forEach { filter ->
+        val filters = listOf(
+            R.string.filter_all,
+            R.string.filter_standard,
+            R.string.filter_deluxe,
+            R.string.filter_suite
+        )
+
+        binding.chipGroupFilter.apply {
+            isSingleSelection = true
+            isSelectionRequired = true
+        }
+
+        filters.forEach { stringResId ->
             binding.chipGroupFilter.addView(
                 com.google.android.material.chip.Chip(requireContext()).apply {
-                    text = filter
+                    text = getString(stringResId)
                     isCheckable = true
-                    isChecked = filter == "All"
-                    setOnCheckedChangeListener { _, checked ->
-                        if (checked) viewModel.setFilter(filter)
-                    }
+                    isChecked = stringResId == R.string.filter_all
                 }
             )
+        }
+
+        binding.chipGroupFilter.setOnCheckedStateChangeListener { group, checkedIds ->
+            if (checkedIds.isNotEmpty()) {
+                val selectedChip = group.findViewById<com.google.android.material.chip.Chip>(checkedIds[0])
+                viewModel.setFilter(selectedChip.text.toString())
+            }
         }
     }
 
@@ -67,7 +84,9 @@ class RoomsFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.rooms.collect { rooms ->
-                    roomAdapter.submitList(rooms)
+                    roomAdapter.submitList(rooms) {
+                        binding.rvRooms.scrollToPosition(0)
+                    }
                 }
             }
         }

@@ -73,4 +73,8 @@
     <string name="btn_book_spa">Book SPA Session</string>
     <string name="label_restaurant_menu">Menu</string>
     <string name="btn_order_to_room">Order to Room</string>
+    <string name="filter_all">All</string>
+    <string name="filter_standard">Standard</string>
+    <string name="filter_deluxe">Deluxe</string>
+    <string name="filter_suite">Suite</string>
 </resources>

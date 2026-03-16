@@ -14,6 +14,12 @@ class RoomAdapter(
     private val onRoomClick: (Room) -> Unit
 ) : ListAdapter<Room, RoomAdapter.ViewHolder>(DIFF) {
 
+    init {
+        setHasStableIds(true)
+    }
+
+    override fun getItemId(position: Int): Long = getItem(position).id.hashCode().toLong()
+
     inner class ViewHolder(private val binding: ItemRoomBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
