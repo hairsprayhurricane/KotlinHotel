@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.kotlinhotel.R
 import com.example.kotlinhotel.databinding.FragmentRoomsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -48,15 +49,28 @@ class RoomsFragment : Fragment() {
     }
 
     private fun setupFilters() {
-        val filters = listOf("All", "Standard", "Deluxe", "Suite")
-        filters.forEach { filter ->
+        val filters = listOf(
+            R.string.filter_all,
+            R.string.filter_standard,
+            R.string.filter_deluxe,
+            R.string.filter_suite
+        )
+        filters.forEach { stringResId ->
             binding.chipGroupFilter.addView(
                 com.google.android.material.chip.Chip(requireContext()).apply {
-                    text = filter
+                    text = getString(stringResId)
                     isCheckable = true
-                    isChecked = filter == "All"
+                    isChecked = stringResId == R.string.filter_all
                     setOnCheckedChangeListener { _, checked ->
-                        if (checked) viewModel.setFilter(filter)
+                        if (checked) {
+                            viewModel.setFilter(getString(stringResId))
+                        } else {
+                            // Если пытаются снять выделение, возвращаем текущий активный фильтр
+                            val currentFilter = viewModel.selectedFilter.value
+                            if (text == currentFilter) {
+                                isChecked = true
+                            }
+                        }
                     }
                 }
             )
