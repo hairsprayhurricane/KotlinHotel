@@ -45,6 +45,7 @@ class RoomsFragment : Fragment() {
         binding.rvRooms.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = roomAdapter
+            itemAnimator = null
         }
     }
 
@@ -55,25 +56,27 @@ class RoomsFragment : Fragment() {
             R.string.filter_deluxe,
             R.string.filter_suite
         )
+
+        binding.chipGroupFilter.apply {
+            isSingleSelection = true
+            isSelectionRequired = true
+        }
+
         filters.forEach { stringResId ->
             binding.chipGroupFilter.addView(
                 com.google.android.material.chip.Chip(requireContext()).apply {
                     text = getString(stringResId)
                     isCheckable = true
                     isChecked = stringResId == R.string.filter_all
-                    setOnCheckedChangeListener { _, checked ->
-                        if (checked) {
-                            viewModel.setFilter(getString(stringResId))
-                        } else {
-                            // Если пытаются снять выделение, возвращаем текущий активный фильтр
-                            val currentFilter = viewModel.selectedFilter.value
-                            if (text == currentFilter) {
-                                isChecked = true
-                            }
-                        }
-                    }
                 }
             )
+        }
+
+        binding.chipGroupFilter.setOnCheckedStateChangeListener { group, checkedIds ->
+            if (checkedIds.isNotEmpty()) {
+                val selectedChip = group.findViewById<com.google.android.material.chip.Chip>(checkedIds[0])
+                viewModel.setFilter(selectedChip.text.toString())
+            }
         }
     }
 
@@ -81,7 +84,9 @@ class RoomsFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.rooms.collect { rooms ->
-                    roomAdapter.submitList(rooms)
+                    roomAdapter.submitList(rooms) {
+                        binding.rvRooms.scrollToPosition(0)
+                    }
                 }
             }
         }
