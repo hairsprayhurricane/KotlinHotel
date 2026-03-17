@@ -107,6 +107,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/label_rental_transport"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <org.osmdroid.views.MapView
+            android:id="@+id/mapRental"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/label_rent_info"
             android:textColor="@color/colorTextSecondary"
             android:textSize="13sp"

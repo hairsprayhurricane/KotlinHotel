@@ -16,11 +16,6 @@ class MockBookingRepository @Inject constructor(
 
     private val _booking = MutableStateFlow<Booking?>(null)
 
-    init {
-        val rooms = generator.generateRooms()
-        _booking.value = generator.generateCurrentBooking(rooms)
-    }
-
     override fun getCurrentBooking(): Flow<Booking?> = _booking.asStateFlow()
 
     override fun createBooking(booking: Booking): Flow<Result<Booking>> = flow {

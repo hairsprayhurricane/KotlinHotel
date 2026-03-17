@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlinhotel.R
 import com.example.kotlinhotel.databinding.FragmentHomeBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -68,6 +69,12 @@ class HomeFragment : Fragment() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { state ->
                     if (!state.isLoading) {
+                        if (state.booking == null) {
+                            requireActivity()
+                                .findViewById<BottomNavigationView>(R.id.bottom_nav)
+                                .selectedItemId = R.id.roomsFragment
+                            return@collect
+                        }
                         updateBookingCard(state)
                         recommendationAdapter.submitList(state.recommendations)
                     }

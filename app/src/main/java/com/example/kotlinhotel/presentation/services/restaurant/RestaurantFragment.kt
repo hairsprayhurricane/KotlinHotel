@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -21,6 +22,10 @@ import com.example.kotlinhotel.presentation.services.ServicesViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory
+import org.osmdroid.util.GeoPoint
+import org.osmdroid.views.MapView
+import org.osmdroid.views.overlay.Marker
 
 @AndroidEntryPoint
 class RestaurantFragment : Fragment() {
@@ -28,6 +33,8 @@ class RestaurantFragment : Fragment() {
     private var _binding: FragmentRestaurantBinding? = null
     private val binding get() = _binding!!
     private val viewModel: ServicesViewModel by activityViewModels()
+
+    private lateinit var mapView: MapView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentRestaurantBinding.inflate(inflater, container, false)
@@ -45,6 +52,8 @@ class RestaurantFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext())
             this.adapter = adapter
         }
+
+        setupRestaurantMap()
 
         binding.btnOrderToRoom.setOnClickListener {
             val foodServices = viewModel.getByCategory(ServiceCategory.FOOD)
@@ -75,6 +84,49 @@ class RestaurantFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun setupRestaurantMap() {
+        mapView = binding.mapNearbyRestaurants
+        mapView.setTileSource(TileSourceFactory.MAPNIK)
+        mapView.setMultiTouchControls(true)
+        val center = GeoPoint(55.7558, 37.6173)
+        mapView.controller.setZoom(15.5)
+        mapView.controller.setCenter(center)
+
+        val mockRestaurants = listOf(
+            Pair(GeoPoint(55.7570, 37.6185), "Ресторан «Высота»"),
+            Pair(GeoPoint(55.7545, 37.6160), "Bistro Central"),
+            Pair(GeoPoint(55.7578, 37.6150), "Sushi Neko"),
+            Pair(GeoPoint(55.7538, 37.6195), "Pizza Roma"),
+            Pair(GeoPoint(55.7565, 37.6140), "Кафе «Уют»")
+        )
+        mockRestaurants.forEach { (point, name) ->
+            val marker = Marker(mapView)
+            marker.position = point
+            marker.title = name
+            marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+            mapView.overlays.add(marker)
+        }
+
+        // Prevent parent NestedScrollView from intercepting touch events on the map,
+        // so tap-on-marker (info window) and map panning both work correctly.
+        mapView.setOnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                v.parent.requestDisallowInterceptTouchEvent(true)
+            }
+            false
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (::mapView.isInitialized) mapView.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (::mapView.isInitialized) mapView.onPause()
     }
 
     override fun onDestroyView() {

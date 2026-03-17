@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.kotlinhotel.R
 import com.example.kotlinhotel.databinding.FragmentBookingFormBinding
@@ -98,8 +99,14 @@ class BookingFormFragment : Fragment() {
                     when (state) {
                         is BookingFormState.Loading -> binding.btnConfirmBooking.isEnabled = false
                         is BookingFormState.Success -> {
-                            Snackbar.make(binding.root, "Booking confirmed!", Snackbar.LENGTH_SHORT).show()
-                            findNavController().navigate(R.id.homeFragment)
+                            findNavController().navigate(
+                                R.id.homeFragment,
+                                null,
+                                NavOptions.Builder()
+                                    .setPopUpTo(R.id.nav_graph, false)
+                                    .setLaunchSingleTop(true)
+                                    .build()
+                            )
                         }
                         is BookingFormState.Error -> {
                             Snackbar.make(binding.root, state.message, Snackbar.LENGTH_SHORT).show()

@@ -73,6 +73,14 @@
     <string name="btn_book_spa">Book SPA Session</string>
     <string name="label_restaurant_menu">Menu</string>
     <string name="btn_order_to_room">Order to Room</string>
+    <string name="label_spa_statistics">Статистика</string>
+    <string name="spa_stat_visits">Визитов в месяц</string>
+    <string name="spa_stat_popular_value">Массаж</string>
+    <string name="spa_stat_popular">Популярная услуга</string>
+    <string name="spa_stat_rating">Средний рейтинг</string>
+    <string name="spa_stat_satisfied">Довольны гостей</string>
+    <string name="label_nearby_restaurants">Ближайшие рестораны</string>
+    <string name="label_rental_transport">Аренда транспорта</string>
     <string name="filter_all">All</string>
     <string name="filter_standard">Standard</string>
     <string name="filter_deluxe">Deluxe</string>
