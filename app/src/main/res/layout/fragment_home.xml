@@ -57,7 +57,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="🏨"
+                    android:text="ð¨"
                     android:textSize="52sp"
                     android:layout_marginBottom="16dp" />
 
@@ -102,7 +102,7 @@
                         <TextView
                             android:layout_width="32dp"
                             android:layout_height="wrap_content"
-                            android:text="🛏"
+                            android:text="ð"
                             android:textSize="16sp" />
 
                         <TextView
@@ -123,7 +123,7 @@
                         <TextView
                             android:layout_width="32dp"
                             android:layout_height="wrap_content"
-                            android:text="✨"
+                            android:text="â¨"
                             android:textSize="16sp" />
 
                         <TextView
@@ -143,7 +143,7 @@
                         <TextView
                             android:layout_width="32dp"
                             android:layout_height="wrap_content"
-                            android:text="📍"
+                            android:text="ð"
                             android:textSize="16sp" />
 
                         <TextView
@@ -312,10 +312,14 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="12dp" />
 
+            <!-- ÐÐ¡ÐÐ ÐÐÐÐÐÐÐ: Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ñ clipToPadding="false" Ð¸ padding="4dp" -->
+            <!-- ÑÑÐ¾Ð±Ñ ÑÐµÐ½Ð¸ ÐºÐ°ÑÑÐ¾ÑÐµÐº Ð½Ðµ Ð¾Ð±ÑÐµÐ·Ð°Ð»Ð¸ÑÑ Ð¿Ð¾ Ð³ÑÐ°Ð½Ð¸ÑÐ°Ð¼ ÐºÐ¾Ð½ÑÐµÐ¹Ð½ÐµÑÐ° -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:clipToPadding="false"
+                android:padding="4dp"
                 android:layout_marginBottom="24dp">
 
                 <com.google.android.material.card.MaterialCardView
@@ -337,7 +341,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="🗺"
+                            android:text="ðº"
                             android:textSize="24sp" />
 
                         <TextView
@@ -369,7 +373,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="🔑"
+                            android:text="ð"
                             android:textSize="24sp" />
 
                         <TextView
@@ -400,7 +404,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="✨"
+                            android:text="â¨"
                             android:textSize="24sp" />
 
                         <TextView
