@@ -62,6 +62,11 @@ class HomeFragment : Fragment() {
         binding.cardServices.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeToServices())
         }
+        binding.btnBrowseRooms.setOnClickListener {
+            requireActivity()
+                .findViewById<BottomNavigationView>(R.id.bottom_nav)
+                .selectedItemId = R.id.roomsFragment
+        }
     }
 
     private fun observeState() {
@@ -70,33 +75,39 @@ class HomeFragment : Fragment() {
                 viewModel.uiState.collect { state ->
                     if (!state.isLoading) {
                         if (state.booking == null) {
-                            requireActivity()
-                                .findViewById<BottomNavigationView>(R.id.bottom_nav)
-                                .selectedItemId = R.id.roomsFragment
-                            return@collect
+                            showEmptyState()
+                        } else {
+                            showBookingState(state)
                         }
-                        updateBookingCard(state)
-                        recommendationAdapter.submitList(state.recommendations)
                     }
                 }
             }
         }
     }
 
+    private fun showEmptyState() {
+        binding.cardNoBooking.visibility = View.VISIBLE
+        binding.cardBooking.visibility = View.GONE
+        binding.sectionGuestContent.visibility = View.GONE
+    }
+
+    private fun showBookingState(state: HomeUiState) {
+        binding.cardNoBooking.visibility = View.GONE
+        binding.cardBooking.visibility = View.VISIBLE
+        binding.sectionGuestContent.visibility = View.VISIBLE
+        updateBookingCard(state)
+        recommendationAdapter.submitList(state.recommendations)
+    }
+
     private fun updateBookingCard(state: HomeUiState) {
-        val booking = state.booking
-        if (booking != null) {
-            val fmt = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
-            binding.tvRoomNumber.text = "Room ${booking.room.number}"
-            binding.tvFloor.text = "Floor ${booking.room.floor}"
-            binding.tvCleaningTime.text = "Cleaning: ${booking.room.cleaningTime}"
-            binding.tvCheckIn.text = "Check-in: ${fmt.format(Date(booking.dateStart))}"
-            binding.tvCheckOut.text = "Check-out: ${fmt.format(Date(booking.dateEnd))}"
-            binding.tvRoomType.text = booking.room.type
-            binding.cardBooking.visibility = View.VISIBLE
-        } else {
-            binding.cardBooking.visibility = View.GONE
-        }
+        val booking = state.booking ?: return
+        val fmt = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+        binding.tvRoomNumber.text = "Room ${booking.room.number}"
+        binding.tvFloor.text = "Floor ${booking.room.floor}"
+        binding.tvCleaningTime.text = "Cleaning: ${booking.room.cleaningTime}"
+        binding.tvCheckIn.text = fmt.format(Date(booking.dateStart))
+        binding.tvCheckOut.text = fmt.format(Date(booking.dateEnd))
+        binding.tvRoomType.text = booking.room.type
     }
 
     override fun onDestroyView() {

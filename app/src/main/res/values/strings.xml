@@ -85,4 +85,10 @@
     <string name="filter_standard">Standard</string>
     <string name="filter_deluxe">Deluxe</string>
     <string name="filter_suite">Suite</string>
+    <string name="no_booking_title">No Active Booking</string>
+    <string name="no_booking_subtitle">You haven\'t booked any apartment yet.\nExplore our rooms and find your perfect stay at Grand Hotel.</string>
+    <string name="btn_browse_rooms">Browse Rooms</string>
+    <string name="no_booking_feature_rooms">Standard, Deluxe &amp; Suite rooms</string>
+    <string name="no_booking_feature_services">Exclusive hotel services</string>
+    <string name="no_booking_feature_location">Prime location &amp; amenities</string>
 </resources>
