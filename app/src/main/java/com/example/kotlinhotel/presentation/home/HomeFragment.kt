@@ -28,7 +28,11 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var recommendationAdapter: RecommendationAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,27 +45,39 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        recommendationAdapter = RecommendationAdapter { service ->
-            findNavController().navigate(
-                HomeFragmentDirections.actionHomeToServices()
-            )
+        recommendationAdapter = RecommendationAdapter { _ ->
+            requireActivity()
+                .findViewById<BottomNavigationView>(R.id.bottom_nav)
+                .selectedItemId = R.id.servicesFragment
         }
+
         binding.rvRecommendations.apply {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(
+                requireContext(),
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
             adapter = recommendationAdapter
         }
     }
 
     private fun setupQuickActions() {
         binding.cardMap.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeToHotelInfo())
+            requireActivity()
+                .findViewById<BottomNavigationView>(R.id.bottom_nav)
+                .selectedItemId = R.id.hotelInfoFragment
         }
+
         binding.cardKey.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeToKey())
         }
+
         binding.cardServices.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeToServices())
+            requireActivity()
+                .findViewById<BottomNavigationView>(R.id.bottom_nav)
+                .selectedItemId = R.id.servicesFragment
         }
+
         binding.btnBrowseRooms.setOnClickListener {
             requireActivity()
                 .findViewById<BottomNavigationView>(R.id.bottom_nav)
@@ -102,6 +118,7 @@ class HomeFragment : Fragment() {
     private fun updateBookingCard(state: HomeUiState) {
         val booking = state.booking ?: return
         val fmt = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+
         binding.tvRoomNumber.text = "Room ${booking.room.number}"
         binding.tvFloor.text = "Floor ${booking.room.floor}"
         binding.tvCleaningTime.text = "Cleaning: ${booking.room.cleaningTime}"
