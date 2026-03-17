@@ -54,10 +54,11 @@
                 android:padding="24dp"
                 android:gravity="center">
 
+                <!-- 🏨 Hotel emoji -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ð¨"
+                    android:text="&#x1F3E8;"
                     android:textSize="52sp"
                     android:layout_marginBottom="16dp" />
 
@@ -92,6 +93,7 @@
                     android:orientation="vertical"
                     android:layout_marginBottom="24dp">
 
+                    <!-- 🛏 Bed emoji -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -102,7 +104,7 @@
                         <TextView
                             android:layout_width="32dp"
                             android:layout_height="wrap_content"
-                            android:text="ð"
+                            android:text="&#x1F6CF;"
                             android:textSize="16sp" />
 
                         <TextView
@@ -113,6 +115,7 @@
                             android:textSize="14sp" />
                     </LinearLayout>
 
+                    <!-- ✨ Sparkles emoji -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -123,7 +126,7 @@
                         <TextView
                             android:layout_width="32dp"
                             android:layout_height="wrap_content"
-                            android:text="â¨"
+                            android:text="&#x2728;"
                             android:textSize="16sp" />
 
                         <TextView
@@ -134,6 +137,7 @@
                             android:textSize="14sp" />
                     </LinearLayout>
 
+                    <!-- 📍 Pin emoji -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -143,7 +147,7 @@
                         <TextView
                             android:layout_width="32dp"
                             android:layout_height="wrap_content"
-                            android:text="ð"
+                            android:text="&#x1F4CD;"
                             android:textSize="16sp" />
 
                         <TextView
@@ -312,8 +316,6 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="12dp" />
 
-            <!-- ÐÐ¡ÐÐ ÐÐÐÐÐÐÐ: Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ñ clipToPadding="false" Ð¸ padding="4dp" -->
-            <!-- ÑÑÐ¾Ð±Ñ ÑÐµÐ½Ð¸ ÐºÐ°ÑÑÐ¾ÑÐµÐº Ð½Ðµ Ð¾Ð±ÑÐµÐ·Ð°Ð»Ð¸ÑÑ Ð¿Ð¾ Ð³ÑÐ°Ð½Ð¸ÑÐ°Ð¼ ÐºÐ¾Ð½ÑÐµÐ¹Ð½ÐµÑÐ° -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -322,6 +324,7 @@
                 android:padding="4dp"
                 android:layout_marginBottom="24dp">
 
+                <!-- Map card -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardMap"
                     android:layout_width="0dp"
@@ -338,10 +341,11 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
+                        <!-- 🗺 Map emoji -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="ðº"
+                            android:text="&#x1F5FA;"
                             android:textSize="24sp" />
 
                         <TextView
@@ -353,6 +357,7 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
+                <!-- Key card -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardKey"
                     android:layout_width="0dp"
@@ -370,10 +375,11 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
+                        <!-- 🔑 Key emoji -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="ð"
+                            android:text="&#x1F511;"
                             android:textSize="24sp" />
 
                         <TextView
@@ -385,6 +391,7 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
+                <!-- Services card -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardServices"
                     android:layout_width="0dp"
@@ -401,10 +408,11 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
+                        <!-- ✨ Sparkles emoji -->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="â¨"
+                            android:text="&#x2728;"
                             android:textSize="24sp" />
 
                         <TextView

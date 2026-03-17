@@ -91,4 +91,9 @@
     <string name="no_booking_feature_rooms">Standard, Deluxe &amp; Suite rooms</string>
     <string name="no_booking_feature_services">Exclusive hotel services</string>
     <string name="no_booking_feature_location">Prime location &amp; amenities</string>
+
+    <string name="emoji_hotel">&#x1F3E8;</string>
+    <string name="emoji_bed">&#x1F6CF;</string>
+    <string name="emoji_sparkles">&#x2728;</string>
+    <string name="emoji_pin">&#x1F4CD;</string>
 </resources>
